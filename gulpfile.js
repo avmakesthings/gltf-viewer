@@ -1,6 +1,10 @@
 //Global
 var gulp = require('gulp');
+var browserify = require('browserify');
+var source = require('vinyl-source-stream');
+var buffer = require('vinyl-buffer');
 var sourcemaps = require('gulp-sourcemaps');
+var gutil = require('gulp-util');
 
 var fs = require('fs');
 
@@ -33,13 +37,29 @@ gulp.task('copy-html', function() {
 });
 
 gulp.task('js', function(){
-  return gulp.src('./js/*.js')
-    .pipe( sourcemaps.init() )
-      .pipe( gulp.dest('./dist/js') )
-      .pipe( uglify() )
-      .pipe( rename({ suffix: '.min' }) )
-    .pipe( sourcemaps.write('./') )
-    .pipe( gulp.dest('./dist/js') );
+ var b = browserify({
+    entries: './js/app.js',
+    debug: true
+  });
+
+  // return b.bundle()
+  //   .pipe(source('app.js'))
+  //   .pipe(buffer())
+  //   .pipe( sourcemaps.init() )
+  //     .pipe( gulp.dest('./dist/js') )
+  //     .pipe( uglify() )
+  //     .pipe( rename({ suffix: '.min' }) )
+  //   .pipe( sourcemaps.write('./') )
+  //   .pipe( gulp.dest('./dist/js') );
+  return b.bundle()
+    .pipe(source('app.js'))
+    .pipe(buffer())
+    .pipe(sourcemaps.init({loadMaps: true}))
+        // Add transformation tasks to the pipeline here.
+        // .pipe(uglify())
+        // .on('error', gutil.log)
+    .pipe(sourcemaps.write('./'))
+    .pipe(gulp.dest('./dist/js/'));
 });
 
 

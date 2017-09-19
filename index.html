@@ -5,23 +5,23 @@
     <meta name="description" content="Temple glTF model">
     <script src="https://aframe.io/releases/0.6.1/aframe.min.js"></script>
     <script src="https://rawgit.com/feiss/aframe-environment-component/master/dist/aframe-environment-component.js"></script>
-    <!-- wrapper fix to support gltf 2.0-->
-
-<!--     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.12.1/dist/aframe-extras.js"></script>
-    <script src="https://rawgit.com/donmccurdy/aframe-extras/master/dist/aframe-extras.loaders.js"></script> -->
+    <script src="/js/app.js"></script>
   </head>
   <body>
     <a-scene>
       <a-assets>
-        <a-asset-item id="temple-obj" src="https://cdn.glitch.com/b415f183-11e7-4c86-b244-4971a9fb22d6%2FTemple-model.obj?1505779172816j"></a-asset-item>
+      <a-asset-item id="temple-gltf" src="/assets/temple-blender-test-00.gltf"></a-asset-item>
+
+<!--         <a-asset-item id="temple-obj" src="https://cdn.glitch.com/b415f183-11e7-4c86-b244-4971a9fb22d6%2FTemple-model.obj?1505779172816j"></a-asset-item> -->
       </a-assets>
       
       <a-entity environment="groundTexture: none; groundColor2: #a96b61; groundColor: #cfa694; fog: 0.01; gridColor: #b7b7b7; grid: 2x2; shadow: true; skyType: atmosphere; skyColor: #709fcc; horizonColor: #ddd; lightPosition: -0.110 1.010 0.330;  "></a-entity>
-      <!-- glTF 2.0 - support will be added in a-frame 0.7-->
-<!--       <a-entity gltf-model-next="src: url(https://cdn.glitch.com/b415f183-11e7-4c86-b244-4971a9fb22d6%2FTemple-model.gltf?1505424789247);"></a-entity> -->
-<a-entity obj-model="obj: #temple-obj;" material="color: white; opacity: 0.95;"></a-entity>
 
-<!--       <a-gltf-model src="#templeModel"></a-gltf-model> -->
+      <!-- glTF 2.0 - support will be added in a-frame 0.7-->
+      <a-entity gltf-model-next="#temple-gltf" material="color: red;"></a-entity>
+<!--       <a-entity obj-model="obj: #temple-obj;" material="color: white; opacity: 0.95;"></a-entity> -->
+
+<!--       <a-gltf-model src="#temple-gltf"></a-gltf-model> -->
     </a-scene>
   </body>
 </html>

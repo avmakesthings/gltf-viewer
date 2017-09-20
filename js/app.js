@@ -42,7 +42,7 @@ AFRAME.registerComponent('gltf-opaque', {
 				shininess: 50, 
 				shading: THREE.SmoothShading, 
 				transparent: true,
-				opacity: 0.5
+				opacity: 0.5,
 			} );
 
 			model.object3D.traverse(function(item){
